@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wolt — Доставка в Атырау</title>
+    <style> 
+    .wolt-slogan {
+    text-align: center;
+    padding: 60px 20px;
+    background: #eef4ff;
+}
+
+.wolt-slogan h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin: 0;
+    color: #000;
+}
+
+.wolt-slogan h1 span {
+    color: #009de0; /* фирменный синий Wolt */
+}
+
+.wolt-slogan p {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #9aa0a6;
+    font-weight: 500;
+}
+
+        .top-buttons {
+    display: flex;
+    gap: 20px;
+    padding: 20px 5%;
+    background: #ffffff;
+
+    /* ВАЖНО — НИЧЕГО НЕ ФИКСИРУЕМ */
+    position: static;
+}
+
+.top-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 12px 22px;
+    background: #009de0;
+    color: #fff;
+
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+        :root {
+            --wolt-blue: #009de0;
+            --wolt-dark: #0c2048;
+            --bg-gray: #f8f8f8;
+            --text-main: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-gray);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Хедер */
+        .header {
+            background-color: white;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--wolt-blue);
+            text-decoration: none;
+        }
+
+        .actions .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        .actions .btn:active { transform: scale(0.95); }
+
+        .btn-primary { background-color: var(--wolt-blue); color: white; }
+        .btn-secondary { background-color: #f0f0f0; color: var(--text-main); margin-right: 10px; }
+
+        /* Категории */
+        .categories-nav {
+            background-color: white;
+            border-top: 1px solid #eee;
+            overflow-x: auto; /* Прокрутка для мобилок */
+            white-space: nowrap;
+            padding: 15px 0;
+        }
+
+        .categories-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .categories-nav a {
+            background: #f3f3f3;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            transition:  0.3s;
+        }
+
+        .categories-nav a:hover { background: #e0e0e0; }
+
+        /* Баннеры */
+        .hero-banner {
+            background: #f7e6af;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        .hero-text h2 { font-size: 2.5rem; margin: 0; color: #8b4d2b; }
+
+        .bigmac-banner {
+            background: linear-gradient(#c4e3a8, #97d362);
+            display: flex;
+            flex-wrap: wrap;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        /* Сетки товаров */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+/* ЛОГОТИП В КАРТОЧКЕ */
+.card-logo {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+
+    width: 42px;          /* нормальный размер */
+    height: 42px;         /* фиксируем высоту */
+    object-fit: contain;  /* не растягивается */
+
+    background: #fff;
+    padding: 6px;
+    border-radius: 10px;
+
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    z-index: 5;
+}
+
+       .product-card {
+    background: linear-gradient(135deg, #ffd6d6,#e66262, #fddb6a);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 12px rgba(255, 120, 120, 0.25);
+}
+       .product-king {
+    background: linear-gradient(135deg, #ffeb33,#ffcf4a, #fffff5);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 12px rgba(255, 120, 120, 0.25);
+}
+       .product-dodo {
+    background: linear-gradient(135deg, #ffd562,#fdff92, #ffffff);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 12px rgba(255, 120, 120, 0.25);
+}
+  .product-dodo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+  .product-king:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+
+        /* Промо iPhone */
+        .iphone-promo {
+            background: #1a1a1a;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 40px;
+            border-radius: 20px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        /* Футер */
+       .wolt-footer {
+    background: #009de0;
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #ffffff;
+}
+
+.footer-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.footer-text {
+    font-size: 15px;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.footer-phone {
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+/* СОЦСЕТИ */
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.footer-socials a {
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.25s, background 0.25s;
+}
+
+.footer-socials a:hover {
+    transform: translateY(-4px);
+    background: rgba(255,255,255,0.35);
+}
+
+.footer-copy {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero-text h2 { font-size: 1.8rem; }
+            .hero-img, .bigmac-img { width: 100%; max-width: 300px; }
+            .header-top { flex-direction: column; gap: 15px; }
+        }
+        /* ИКОНКИ КАТЕГОРИЙ */
+.icon-categories {
+    display: flex;
+    gap: 18px;
+    padding: 25px 5%;
+    background: #eaf0ff;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.icon-item {
+    width: 120px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    color: #000;
+}
+
+.icon-box {
+    width: 100%;
+    height: 90px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    padding: 40px 6%;
+    background: #eaf2ff;
+}
+
+.info-card {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+.info-card:hover {
+     transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.info-card img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+}
+
+.info-card h3 {
+    font-size: 20px;
+    margin: 15px;
+    font-weight: 700;
+}
+
+.info-card p {
+    margin: 0 15px 18px;
+    font-size: 16px;
+    color: #555;
+}
+
+.info-card span {
+    color: #009de0;
+    font-weight: 700;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+   .tehnika {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+       .electronica {
+    background: linear-gradient(to left, #2d6cca,#00a2ff, #b3d7e7);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 12px rgba(255, 120, 120, 0.25);
+}
+       .electro {
+    background: linear-gradient(135deg, #a2a3a3,#92b8ff, #ffffff);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 6px 12px rgba(255, 120, 120, 0.25);
+}
+  .electro:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+  .electronica:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+     
+
+</style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container">
+        <div class="header-top">
+            <!-- Верхние кнопки -->
+            <a href="#" class="logo">Wolt</a>
+            <div class="top-buttons">
+    <a href="#recomendations" class="top-btn">🧭 рекомендации</a>
+    <a href="#food" class="top-btn">🍴 Рестораны</a>
+    <a href="#shop" class="top-btn">🏪 Магазин</a>
+</div>
+            <div class="actions">
+                <button class="btn btn-secondary">Войти</button>
+                <button class="btn btn-primary">Регистрация</button>
+            </div>
+        </div>
+    </div>
+    <nav class="categories-nav">
+   <section class="icon-categories">
+
+    <div class="icon-item">
+        <div class="icon-box" id="icon" style="background:#ffd37a;">🍽️</div>
+        Ресторан
+    </div>
+
+    <div class="icon-item">
+        <div class="icon-box" style="background:#b9fbc0;">🥕</div>
+        Продукты
+    </div>
+
+    <div class="icon-item">
+        <div class="icon-box" style="background:#ffd6d6;">🩺</div>
+        Аптечка
+    </div>
+
+    <div class="icon-item">
+        <div class="icon-box" style="background:#d9f2ff;">🥤</div>
+        Напитки
+    </div>
+
+    <div class="icon-item">
+        <div class="icon-box" style="background:#e6d9ff;">💄</div>
+        Косметика
+    </div>
+
+    <div class="icon-item">
+        <div class="icon-box" style="background:#ffd9f2;">💻</div>
+        Электроника
+    </div>
+
+    <div class="icon-item">
+        <div class="icon-box" style="background:#fff3a6;">🧸</div>
+        Игрушки
+    </div>
+
+    <div class="icon-item">
+        <div class="icon-box" style="background:#d9ffb3;">🌸</div>
+        Цветы
+    </div>
+
+    <div class="icon-item">
+        <div class="icon-box" style="background:#ffc2d1;">🛍️</div>
+        Другие
+    </div>
+
+</section>
+
+    </nav>
+</header>
+
+<main class="container">
+    <section class="hero-banner">
+        <div class="hero-text">
+            <h2>Скидка 50% на Мега Комбо!</h2>
+            <p>Успей забрать лучший набор по суперцене.</p>
+        </div>
+        <a href="https://im.kz/products?category=7" target="_blank">
+        <img src="combo.png.png" alt="Combo" class="hero-img" style="width: 300px;" >
+        </a>
+    </section>
+
+    <section class="bigmac-banner">
+<a href="https://www.mcdonalds.com/us/en-us/product/big-mac.html" target="_blank">
+        <img src="image 28.png" alt="Big Mac" style="width: 250px;">
+</a>
+        <div style="flex: 1; padding-left: 30px; min-width: 250px;">
+            <h3 style="font-size: 2rem; color: #6b3b2e;">Big Mac — Классика</h3>
+            <p>Две сочные говяжьи котлеты и тот самый легендарный соус.</p>
+            <span id="food" style="background: #000; color: #fff; padding: 10px 20px; border-radius: 50px; font-weight: bold;">799₸</span>
+        </div>
+    </section>
+
+    <div class="product-grid">
+        <article class="product-king">
+            <a href="https://burgerkingrus.ru/whopper-fire" target="_blank">
+            <img src="whopper.png.png" class="product-img" alt="Whopper">
+            </a>
+            <h4>Whopper</h4>
+            <p>1499₸ • ⭐ 7.9</p>
+        </article>
+        <article class="product-card">
+            <a href="https://www.kfc.kz/menu#chicken" target="_blank">
+            <img src="kfc.png.png" class="product-img" alt="KFC">
+            </a>
+            <h4>KFC Bucket</h4>
+            <p>2700₸ • ⭐ 8.2</p>
+        </article>
+        <article class="product-dodo">
+            <a href="https://dodopizza.kz/almaty" target="_blank">
+            <img src="pizza.png" class="product-img" alt="Pizza">
+            </a>
+            <h4>Пепперони</h4>
+            <p>2500₸ • ⭐ 9.2</p>
+        </article>
+    </div>
+
+    <section class="iphone-promo">
+        <a href="https://www.sulpak.kz/Stocks/Action/8728/apple_vstrechaj_noviyj_god_s_viygodoj?utm_term=apple&utm_source=google&utm_medium=search_cpc&utm_campaign=apple_new_year&gad_source=1&gad_campaignid=23046865146&gbraid=0AAAAA_CIfdbc0EZZ2tcb_dOiyRR2GOXH0&gclid=Cj0KCQiA6Y7KBhCkARIsAOxhqtMf4Jn4-M0o5MecLvqs6yEaulfZCGAFKgoOQaog3AQlG_TsE5HfBM4aAqMMEALw_wcB" target="_blank">
+        <img src="iphone.png.png" alt="iPhone" style="width: 350px;">
+        </a>
+        <div>
+            <h3>iPhone 17 Pro Max</h3>
+            <p style="font-family: Arial;">Будущее уже здесь. Доставка за 30 минут.</p>
+        </div>
+    </section>
+</main> 
+<div id="shop" class="tehnika">
+        <article class="electro">
+            <a href="https://itmag.kz/p/119519-lenovo-thinkbook-16-g8-irl-intel-core-5/?utm_source=google&utm_medium=cpc&utm_campaign=%D0%9C%D0%B0%D0%BA%D1%81+%D0%AD%D1%84%D1%84%D0%B5%D0%BA%D1%82+%7C+%D0%9E%D0%B1%D1%89%D0%B0%D1%8F&utm_content=&utm_term=&gad_source=1&gad_campaignid=22900393104&gbraid=0AAAABBHFVjgb8SmgDT6fR2dh5gojKvet2&gclid=CjwKCAiAu67KBhAkEiwAY0jAlUFu5W3_pwyblEfKPPPBLt3AXE9QZNXmk3C-4GQNn7ao0Prl3L8pkxoCJAUQAvD_BwE" target="_blank">
+            <img src="lenovo.png.png" class="product-img" alt="Whopper">
+            </a>
+            <h4>Lenovo ThinkBook 16 G8 IRL 16<br> 16 Гб SSD 512 Гб Win 11 Pro 21SH0082RT</h4>
+            <p>455 000₸ • ⭐ 7.9</p>
+        </article>
+        <article class="electronica">
+            <a href="https://sleve.cl/collections/todos-los-audifonos-new?srsltid=AfmBOorKS650ctl0d5kRK5EtWCR2h0TI9Cnyi1U-jR8aiZ4wzWUHYmMR" target="_blank">
+            <img src="headphones.png.png" class="product-img" alt="KFC">
+            </a>
+            <h4>Sleve Evo 1Gen Black</h4>
+            <p>25 000₸ • ⭐ 8.2</p>
+        </article>
+    </div>
+<section class="wolt-slogan">
+    <h1>
+        С <span>Wolt</span> жизнь вкуснее
+    </h1>
+    <p>Доставим почти всё — быстро, надёжно и доступно</p>
+</section>
+
+<section id="recomendations" class="info-grid">
+
+  <div class="info-card">
+    <img src="ordr.jpg" alt="">
+    <h3>Заказывайте в любом месте за 0₸</h3>
+    <p>Доставка за 0₸ с <span>Wolt+</span></p>
+  </div>
+
+  <div class="info-card">
+    <img src="market.webp" alt="">
+    <h3>Доставка свежих продуктов</h3>
+    <p><span>Wolt Market</span></p>
+  </div>
+
+  <div class="info-card">
+    <img src="file-19__4_.jpg" alt="">
+    <h3>Стань курьером-партнёром Wolt</h3>
+    <p>Работай по своему графику</p>
+  </div>
+
+  <div class="info-card">
+    <img src="support.jpg" alt="">
+    <h3>Служба поддержки мирового уровня</h3>
+    <p>Мы всегда рядом</p>
+  </div>
+
+</section>
+<footer class="wolt-footer">
+    <div class="footer-content">
+        <p class="footer-title">Wolt Kazakhstan</p>
+        <p class="footer-text">Атырау, ул. Отешкали Атамбаев 77а</p>
+        <p class="footer-phone">☎ +7 (770) 902 52 62</p>
+
+        <!-- ИКОНКИ -->
+        <div class="footer-socials">
+            <a href="https://wa.me/77709025262" target="_blank" aria-label="WhatsApp">💬</a>
+            <a href="https://instagram.com/wolt" target="_blank" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="Support">😊</a>
+        </div>
+
+        <p class="footer-copy">© 2025 Wolt</p>
+    </div>
+</footer>
+
+
+</body>
+</html>
+          
+       
