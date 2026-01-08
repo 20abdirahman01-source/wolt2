@@ -509,48 +509,83 @@
 }
 
 /* Адаптив */
-@media (max-width: 768px) {
-    .info-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 600px) {
+
+    /* ТЕКСТ */
+    body {
+        font-size: 14px;
+    }
+
+    /* ЛОГО */
+    .logo {
+        font-size: 24px;
+    }
+
+    /* ВЕРХНИЕ КНОПКИ */
+    .top-btn {
+        padding: 8px 14px;
+        font-size: 13px;
+        border-radius: 40px;
+    }
+
+    /* КНОПКИ ВХОД / РЕГ */
+    .actions .btn {
+        padding: 8px 12px;
+        font-size: 13px;
+        border-radius: 18px;
+    }
+
+    /* КАТЕГОРИИ */
+    .icon-item {
+        width: 80px;
+        font-size: 11px;
+    }
+
+    .icon-box {
+        height: 64px;
+        font-size: 26px;
+        border-radius: 14px;
+    }
+
+    /* БАННЕР */
+    .hero-text h2 {
+        font-size: 20px;
+    }
+
+    /* КАРТОЧКИ */
+    .product-img {
+        height: 150px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    p {
+        font-size: 13px;
+    }
+
+    /* INFO КАРТОЧКИ */
+    .info-card h3 {
+        font-size: 18px;
+    }
+
+    .info-card p {
+        font-size: 14px;
+    }
+
+    /* ФУТЕР */
+    .footer-title {
+        font-size: 16px;
+    }
+
+    .footer-text,
+    .footer-phone,
+    .footer-copy {
+        font-size: 13px;
     }
 }
 
-   .tehnika {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-       .electronica {
-    background: linear-gradient(to left, #2d6cca,#00a2ff, #b3d7e7);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: left;
-    position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 6px 12px rgba(255, 120, 120, 0.25);
-}
-       .electro {
-    background: linear-gradient(135deg, #a2a3a3,#92b8ff, #ffffff);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: left;
-    position: relative;
-    transition: transform 0.3s, box-shadow 0.3s;
-    box-shadow: 0 6px 12px rgba(255, 120, 120, 0.25);
-}
-  .electro:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-  .electronica:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-     .icon-categories a:hover .icon-box {
-    transform: translateY(-4px);
-    transition: 0.25s;
-}
 
 </style>
 </head> 
@@ -901,6 +936,7 @@ categoryLinks.forEach(link => {
           
 
        
+
 
 
 
